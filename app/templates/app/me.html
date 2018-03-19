@@ -1,0 +1,51 @@
+﻿{% extends "app/layout.html" %}
+
+{% block content %}
+
+<h1>Welcome, {{ user }}!</h1>
+
+<h2>You are currently the winning bidder for:</h2>
+
+{% if winning_items %}
+	<div id="listing">
+	{% for item in winning_items %}
+		<div class="row">
+                <div class="col-md-3">
+                <a href="/items/{{item.id}}">
+                    {{item.name}}
+                </a>
+                </div>  
+                <div class="col-md-3">
+                    <img src="{{ item.image.url }}" width="240" height="240">
+                </div>
+             </div>
+	{% endfor %}
+	<div style="clear:both"></div>
+	</div>
+{% else %}
+	Nothing right now!
+{% endif %}
+
+<h2>Your bids have been beaten for:</h2>
+
+{% if beaten_items %}
+	<div id="listing">
+	{% for item in beaten_items %}
+		<div class="row">
+                <div class="col-md-3">
+                <a href="/items/{{item.id}}">
+                    {{item.name}}
+                </a>
+                </div>  
+                <div class="col-md-3">
+                    <img src="{{ item.image.url }}" width="240" height="240">
+                </div>
+             </div>
+	{% endfor %}
+	<div style="clear:both"></div>
+	</div>
+{% else %}
+	Nothing right now!
+{% endif %}
+
+{% endblock %}

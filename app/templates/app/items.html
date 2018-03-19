@@ -1,0 +1,19 @@
+﻿{% extends 'app/layout.html' %}
+{% block content %}
+
+    <h2>Items</h2>
+    <ul>
+        {% for item in nitem %}
+            <div class="row">
+                <div class="col-md-3">
+                <a href="/items/{{item.id}}">
+                    {{item.name}}
+                </a>
+                </div>  
+                <div class="col-md-3">
+                    <img src="{{ item.image.url }}" width="240" height="240">
+                </div>
+             </div>
+        {% endfor %}
+    </ul>
+{% endblock %}
